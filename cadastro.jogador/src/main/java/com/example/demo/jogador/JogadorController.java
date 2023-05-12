@@ -37,7 +37,7 @@ public class JogadorController {
 	
 	@PutMapping
 	@Transactional
-	public void atualizar(@RequestBody DadosCadastroJogador dados) {
+	public void atualizar(@RequestBody @Valid DadosCadastroJogador dados) {
 		try {
 			Optional<Jogador> jogadorOptional = repository.findById(dados.id());
 			if (jogadorOptional.isPresent()) {
