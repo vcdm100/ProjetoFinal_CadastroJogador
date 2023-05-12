@@ -18,6 +18,10 @@ public class Grupo {
 		
 	}
 	
+	public Grupo(DadosCadastroGrupo dados) {
+		this.nome = dados.nome();
+	}
+	
 	public String getId() {
 		return id;
 	}
