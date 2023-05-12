@@ -26,8 +26,14 @@ public class Codinome {
 	@Column(insertable=false, updatable=false)
 	private String grupo_id;
 	
-	public Codinome () {
+	public Codinome() {
 		
+	}
+	
+	public Codinome(DadosCadastroCodinome dados) {
+		this.codinome = dados.codinome();
+		this.jogador = dados.jogador();
+		this.grupo = dados.grupo();
 	}
 	
 	@ManyToOne()
@@ -37,7 +43,12 @@ public class Codinome {
 	
 	@ManyToOne() 
 	@MapsId("grupoId")
+	@JoinColumn(name="grupo_id")
 	private Grupo grupo;
+	
+	public String getId() {
+		return id;
+	}
 	
 	public Jogador getJogador() {
 		return this.jogador;
@@ -47,10 +58,6 @@ public class Codinome {
 		return this.grupo;
 	}
 	
-	public String getId() {
-		return id;
-	}
-
 	public String getCodinome() {
 		return codinome;
 	}
@@ -58,5 +65,11 @@ public class Codinome {
 	public void setCodinome(String codinome) {
 		this.codinome = codinome;
 	}
-
+	
+	public void atualizarCodinome (DadosEscolhidosCodinome dados) {
+		this.codinome = dados.codinome();
+		this.jogador = dados.jogador();
+		this.grupo = dados.grupo();
+	}
+	
 }
